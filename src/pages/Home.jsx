@@ -16,7 +16,7 @@ const Home = () => {
     //Create todo
     const createTodo = async()=>{
       try {
-        const response = await axios.post("http://localhost:3000/todo", { title });
+        const response = await axios.post("https://todomernbackend-production.up.railway.app/todo", { title });
         if (response.data.isSuccessfull) {
           console.log(response.data.message); // "Data posted successfully"
           getTodo()
@@ -31,7 +31,7 @@ const Home = () => {
   
     const getTodo = async()=>{
       axios
-        .get("http://localhost:3000/todo")
+        .get("https://todomernbackend-production.up.railway.app/todo")
         .then((response) => {
           setTodos(response.data.data); // Assuming your API response has a "data" key
           console.log(todos)
@@ -45,7 +45,7 @@ const Home = () => {
     //Delete todo
     const delTodo = async(id)=>{
       try {
-        const response = await axios.delete(`http://localhost:3000/todo/${id}`);
+        const response = await axios.delete(`https://todomernbackend-production.up.railway.app/todo/${id}`);
         if (response.data.isSuccessfull) {
           console.log(response.data.message); // "Todo deleted successfully"
           getTodo(); // Refresh the list after deletion
@@ -69,7 +69,7 @@ const Home = () => {
     const handleOk = async() => {
       try {
         setConfirmLoading(true);
-        const response = await axios.put(`http://localhost:3000/todo/${currentTodoId}`, {
+        const response = await axios.put(`https://todomernbackend-production.up.railway.app/todo/${currentTodoId}`, {
           title: updated,
         });
     
